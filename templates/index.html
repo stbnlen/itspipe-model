@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Its Pipe Game Result Prediction</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+	<div class="login">
+		<h2>Its Pipe Game Result Prediction</h2>
+		<p>Introduce los campos solicitados:</p>
+		<form action="{{url_for('predict')}}" method="post">
+			<label>Asesinatos conseguidos</label>
+			<input type="text" name="kill" placeholder="Kill" required="required">
+
+			<label>Veces asesinado</label>
+			<input type="text" name="death" placeholder="Death" required="required">
+
+			<label>Asistencias realizadas</label>
+			<input type="text" name="assist" placeholder="Assist" required="required">
+
+			<label>Tipo de partida</label>
+			<select id="dropdown" name="game_type">
+				<option value="0">Normal</option>
+				<option value="1">ARAM</option>
+				<option value="2">Rango 5:5 Flex</option>
+				<option value="3">Clasificatoria Solo 5vs5</option>
+				<option value="4">Clash</option>
+			</select>
+
+			<label>Torres destruidas por el equipo</label>
+			<input type="text" name="tower" placeholder="Towers" required="required">
+
+			<label>Minion totales</label>
+			<input type="text" name="cs" placeholder="Cs" required="required">
+
+			<label>Daño realizado</label>
+			<input type="text" name="dmg_dealt" placeholder="dmg dealt" required="required">
+
+			<label>Daño recibido</label>
+			<input type="text" name="dmg_taken" placeholder="dmg taken" required="required">
+
+			<label>Campeon</label>
+			<select id="dropdown" name="champion">
+				<option value="0">Zed</option>
+				<option value="1">Kayn</option>
+				<option value="2">Vex</option>
+				<option value="3">Veigar</option>
+				<option value="4">Fizz</option>
+				<option value="5">LeBlanc</option>
+				<option value="6">Vi</option>
+				<option value="7">Sejuani</option>
+				<option value="8">Sylas</option>
+				<option value="9">Elise</option>
+			</select>
+
+			<label>Minions por minuto</label>
+			<input type="text" name="cs_per_minute" placeholder="Cs per minute" required="required">
+			<button type="submit"> Predecir Resultado</button>
+		</form>
+		<br>
+		<br>
+		<div class="modal" id="prediction-modal">
+			<div class="modal-content">
+			  <span class="close">&times;</span>
+			  <p>{{ prediction_text }}</p>
+			</div>
+		  </div>
+	</div>
+	<script>
+		function showModal() {
+			const modal = document.getElementById("prediction-modal");
+			const modalText = document.querySelector("#prediction-modal p");
+			modalText.innerHTML = "{{ prediction_text }}";
+			modal.style.display = "block";
+			const span = document.getElementsByClassName("close")[0];
+			span.onclick = function () {
+				modal.style.display = "none";
+			}
+			window.onclick = function (event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		}
+
+		const form = document.querySelector('form');
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
+			showModal();
+		});
+	</script>
+</body>
+
+</html>
