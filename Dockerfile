@@ -14,6 +14,7 @@ COPY main.py .
 COPY model.pkl .
 COPY templates/index.html templates/
 COPY static/css/style.css static/
+COPY Procfile .
 
 EXPOSE 5000
 
