@@ -11,6 +11,7 @@
 <body>
 	<div class="login">
 		<h2>Its Pipe Game Result Prediction</h2>
+		<b>{{ prediction_text }}</b>
 		<p>Introduce los campos solicitados:</p>
 		<form action="{{url_for('predict')}}" method="post">
 			<label>Asesinatos conseguidos</label>
@@ -59,41 +60,9 @@
 
 			<label>Minions por minuto</label>
 			<input type="text" name="cs_per_minute" placeholder="Cs per minute" required="required">
-			<button type="submit"> Predecir Resultado</button>
+			<button type="submit" id="submit-btn"> Predecir Resultado</button>
 		</form>
-		<b>{{ prediction_text }}</b>
-		<br>
-		<br>
-		<div class="modal" id="prediction-modal">
-			<div class="modal-content">
-			  <span class="close">&times;</span>
-			  <p>{{ prediction_text }}</p>
-			</div>
-		  </div>
-		</div>
-	<script>
-		function showModal() {
-			const modal = document.getElementById("prediction-modal");
-			const modalText = document.querySelector("#prediction-modal p");
-			modalText.innerHTML = "{{ prediction_text }}"
-			modal.style.display = "block";
-			const span = document.getElementsByClassName("close")[0];
-			span.onclick = function () {
-				modal.style.display = "none";
-			}
-			window.onclick = function (event) {
-				if (event.target == modal) {
-					modal.style.display = "none";
-				}
-			}
-		}
-
-		const form = document.querySelector('form');
-		form.addEventListener('submit', function (e) {
-			e.preventDefault();
-			showModal();
-		});
-	</script>
+	</div>
 </body>
 
 </html>

@@ -11,7 +11,7 @@ mapeo_champions = {"Zed": 0, "Kayn": 1, "Vex": 2, "Veigar": 3, "Fizz": 4, "LeBla
 def make_prediction(inputs: Dict[str, Any]) -> str:
     prediction = model.predict([list(inputs.values())])
     champion = [k for k, v in mapeo_champions.items() if v == inputs['champion']][0]
-    return f'La partida con {champion} donde obtuvo {inputs["kill"]} Kills termino siendo una {prediction[0]}'
+    return f'La partida con {champion} es una contundente {prediction[0]}'
 
 @app.route("/")
 def index():
