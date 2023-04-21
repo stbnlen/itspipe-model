@@ -61,6 +61,7 @@
 			<input type="text" name="cs_per_minute" placeholder="Cs per minute" required="required">
 			<button type="submit"> Predecir Resultado</button>
 		</form>
+		<b>{{ prediction_text }}</b>
 		<br>
 		<br>
 		<div class="modal" id="prediction-modal">
@@ -69,12 +70,12 @@
 			  <p>{{ prediction_text }}</p>
 			</div>
 		  </div>
-	</div>
+		</div>
 	<script>
 		function showModal() {
 			const modal = document.getElementById("prediction-modal");
 			const modalText = document.querySelector("#prediction-modal p");
-			modalText.innerHTML = "{{ prediction_text }}";
+			modalText.innerHTML = "{{ prediction_text }}"
 			modal.style.display = "block";
 			const span = document.getElementsByClassName("close")[0];
 			span.onclick = function () {
