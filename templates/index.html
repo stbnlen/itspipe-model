@@ -5,64 +5,64 @@
 	<meta charset="utf-8">
 	<title>Its Pipe Game Result Prediction</title>
 	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
 	<div class="login">
-		<h2>Its Pipe Game Result Prediction</h2>
-		<b>{{ prediction_text }}</b>
-		<p>Introduce los campos solicitados:</p>
-		<form action="{{url_for('predict')}}" method="post">
-			<label>Asesinatos conseguidos</label>
-			<input type="text" name="kill" placeholder="Kill" required="required">
-
-			<label>Veces asesinado</label>
-			<input type="text" name="death" placeholder="Death" required="required">
-
-			<label>Asistencias realizadas</label>
-			<input type="text" name="assist" placeholder="Assist" required="required">
-
-			<label>Tipo de partida</label>
-			<select id="dropdown" name="game_type">
-				<option value="0">Normal</option>
-				<option value="1">ARAM</option>
-				<option value="2">Rango 5:5 Flex</option>
-				<option value="3">Clasificatoria Solo 5vs5</option>
-				<option value="4">Clash</option>
-			</select>
-
-			<label>Torres destruidas por el equipo</label>
-			<input type="text" name="tower" placeholder="Towers" required="required">
-
-			<label>Minion totales</label>
-			<input type="text" name="cs" placeholder="Cs" required="required">
-
-			<label>Daño realizado</label>
-			<input type="text" name="dmg_dealt" placeholder="dmg dealt" required="required">
-
-			<label>Daño recibido</label>
-			<input type="text" name="dmg_taken" placeholder="dmg taken" required="required">
-
-			<label>Campeon</label>
-			<select id="dropdown" name="champion">
-				<option value="0">Zed</option>
-				<option value="1">Kayn</option>
-				<option value="2">Vex</option>
-				<option value="3">Veigar</option>
-				<option value="4">Fizz</option>
-				<option value="5">LeBlanc</option>
-				<option value="6">Vi</option>
-				<option value="7">Sejuani</option>
-				<option value="8">Sylas</option>
-				<option value="9">Elise</option>
-			</select>
-
-			<label>Minions por minuto</label>
-			<input type="text" name="cs_per_minute" placeholder="Cs per minute" required="required">
-			<button type="submit" id="submit-btn"> Predecir Resultado</button>
+		<h2 class="text-center text-danger">Predicción de resultados de Its Pipe Game</h2>
+		<p class="text-center text-secondary"><b>{{ prediction_text }}</b></p>
+		<p class="text-center text-secondary">Introduce los campos solicitados:</p>
+		<form action="{{url_for('predict')}}" method="post" class="row form-container">
+			<div class="col-sm-6 form-group">
+				<label>Asesinatos conseguidos</label>
+				<input type="text" name="kill" placeholder="Kill" required="required" class="form-control">
+				<label>Veces asesinado</label>
+				<input type="text" name="death" placeholder="Death" required="required" class="form-control">
+				<label>Asistencias realizadas</label>
+				<input type="text" name="assist" placeholder="Assist" required="required" class="form-control">
+				<label>Tipo de partida</label>
+				<select id="dropdown" name="game_type" class="form-control">
+					<option value="0">Normal</option>
+					<option value="1">ARAM</option>
+					<option value="2">Rango 5:5 Flex</option>
+					<option value="3">Clasificatoria Solo 5vs5</option>
+					<option value="4">Clash</option>
+				</select>
+				<label>Torres destruidas por el equipo</label>
+				<input type="text" name="tower" placeholder="Towers" required="required" class="form-control">
+			</div>
+			<div class="col-sm-6 form-group">
+				<label>Minion totales</label>
+				<input type="text" name="cs" placeholder="Cs" required="required" class="form-control">
+				<label>Daño realizado</label>
+				<input type="text" name="dmg_dealt" placeholder="dmg dealt" required="required" class="form-control">
+				<label>Daño recibido</label>
+				<input type="text" name="dmg_taken" placeholder="dmg taken" required="required" class="form-control">
+				<label>Campeon</label>
+				<select id="dropdown" name="champion" class="form-control custom-select">
+					<option value="0">Zed</option>
+					<option value="1">Kayn</option>
+					<option value="2">Vex</option>
+					<option value="3">Veigar</option>
+					<option value="4">Fizz</option>
+					<option value="5">LeBlanc</option>
+					<option value="6">Vi</option>
+					<option value="7">Sejuani</option>
+					<option value="8">Sylas</option>
+					<option value="9">Elise</option>
+				</select>
+				<label>Minions por minuto</label>
+				<input type="text" name="cs_per_minute" placeholder="Cs per minute" required="required"
+					class="form-control">
+			</div>
+			<div class="col-12 text-center mt-3">
+				<button type="submit" id="submit-btn" class="btn btn-primary btn-lg btn">Predecir resultado</button>
+			</div>
 		</form>
 	</div>
+
 </body>
 
 </html>
