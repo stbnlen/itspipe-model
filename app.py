@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 from typing import Dict, Any
 import pickle
@@ -39,5 +40,5 @@ def predict():
     prediction_text = make_prediction(inputs)
     return render_template('index.html', prediction_text=prediction_text)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True, port=os.getenv("PORT", default=5000))
