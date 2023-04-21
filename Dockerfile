@@ -1,4 +1,3 @@
-# Usar Python 3.10
 FROM python:3.10
 
 # Establecer el directorio de trabajo
@@ -11,7 +10,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar el resto del código
-COPY . .
+COPY main.py .
+COPY model.pkl .
+COPY templates/index.html templates/
+COPY static/css/style.css static/
 
 EXPOSE 5000
 
