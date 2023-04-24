@@ -49,11 +49,9 @@ def predict():
         "assist": int(request.form["assist"]),
         "game_type": int(request.form["game_type"]),
         "tower": int(request.form["tower"]),
-        "cs": int(request.form["cs"]),
-        "dmg_taken": int(request.form["dmg_taken"]),
+        "baron": int(request.form["baron"]),
         "dmg_dealt": int(request.form["dmg_dealt"]),
         "champion": int(request.form["champion"]),
-        "cs_per_minute": float(request.form["cs_per_minute"]),
     }
     prediction_text = make_prediction(inputs)
     return render_template("index.html", prediction_text=prediction_text)

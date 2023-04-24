@@ -6,6 +6,15 @@
 	<title>Its Pipe Game Result Prediction</title>
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
@@ -28,18 +37,15 @@
 					<option value="1">ARAM</option>
 					<option value="2">Rango 5:5 Flex</option>
 					<option value="3">Clasificatoria Solo 5vs5</option>
-					<option value="4">Clash</option>
 				</select>
-				<label>Torres destruidas por el equipo</label>
-				<input type="text" name="tower" placeholder="Towers" required="required" class="form-control">
 			</div>
 			<div class="col-sm-6 form-group">
+				<label>Torres destruidas por el equipo</label>
+				<input type="text" name="tower" placeholder="Towers" required="required" class="form-control">
 				<label>Minion totales</label>
-				<input type="text" name="cs" placeholder="Cs" required="required" class="form-control">
-				<label>Daño realizado</label>
+				<input type="text" name="baron" placeholder="Baron" required="required" class="form-control">
+				<label>Barones Realizados</label>
 				<input type="text" name="dmg_dealt" placeholder="dmg dealt" required="required" class="form-control">
-				<label>Daño recibido</label>
-				<input type="text" name="dmg_taken" placeholder="dmg taken" required="required" class="form-control">
 				<label>Campeon</label>
 				<select id="dropdown" name="champion" class="form-control custom-select">
 					<option value="0">Zed</option>
@@ -53,15 +59,35 @@
 					<option value="8">Sylas</option>
 					<option value="9">Elise</option>
 				</select>
-				<label>Minions por minuto</label>
-				<input type="text" name="cs_per_minute" placeholder="Cs per minute" required="required"
-					class="form-control">
+			</div>
+			<div class="col-sm-6 form-group">
+				<label>&nbsp;</label> <!-- Fila vacía para crear espacio -->
 			</div>
 			<div class="col-12 text-center mt-3">
-				<button type="submit" id="submit-btn" class="btn btn-primary btn-lg btn">Predecir resultado</button>
+				<!-- <button type="submit" id="submit-btn" class="btn btn-primary btn-lg btn">Predecir resultado</button> -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#resultadoModal">Ver
+					resultado</button>
 			</div>
 		</form>
 	</div>
+	<div class="modal fade" id="resultadoModal" tabindex="-1" role="dialog" aria-labelledby="resultadoModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="resultadoModalLabel">Resultado</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p><b>{{ prediction_text }}</b></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	</script>
 
 </body>
 
