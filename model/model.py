@@ -51,7 +51,18 @@ def train_game_result_prediction_model(df):
             "dmg_dealt",
             "champion",
         ]
+    ].copy()
+    X.columns = [
+        "kill",
+        "death",
+        "assist",
+        "game_type",
+        "tower",
+        "baron",
+        "dmg_dealt",
+        "champion",
     ]
+
     y = df["result"]
 
     game_result_prediction_pipeline = Pipeline(
@@ -83,15 +94,11 @@ def clean_dataframe(df):
         'result != "Rehacer" and game_type != "Clash" and champion in @popular_champions'
     )
 
-    df["dmg_dealt"] = df["dmg_dealt"].str.replace(",", "").astype(int)
-    df["dmg_taken"] = df["dmg_taken"].str.replace(",", "").astype(int)
-    df["control_wards"] = pd.to_numeric(
-        df["control_wards"].str.replace("Control Ward", "")
-    )
-    df["cs_per_minute"] = (
-        df["cs_per_minute"].apply(lambda x: re.sub("[()]", "", x)).astype(float)
-    )
-    df["average_tier"] = df["average_tier"].str.replace(r"\d+", "").str.strip()
+    df.loc[:, "dmg_dealt"] = df["dmg_dealt"].str.replace(",", "").astype(int)
+
+    df.loc[:, "dmg_taken"] = df["dmg_taken"].str.replace(",", "").astype(int)
+
+    df.loc[:, "average_tier"] = df["average_tier"].str.replace(r"\d+", "").str.strip()
 
     game_type_mapping = {
         "Normal": 0,
