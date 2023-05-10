@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from typing import Dict, Any
 import pickle
 
@@ -55,7 +55,8 @@ def predict():
     ]
     inputs = {key: int(request.form[key]) for key in INPUT_KEYS}
     prediction_text = make_prediction(inputs)
-    return render_template("index.html", prediction_text=prediction_text)
+    # return render_template("index.html", prediction_text=prediction_text)
+    return jsonify({"result": prediction_text})
 
 
 if __name__ == "__main__":
